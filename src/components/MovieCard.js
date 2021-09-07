@@ -1,5 +1,5 @@
 import { Card, Col, Row } from "react-bootstrap";
-
+import Rating from "react-rating";
 const MovieCard = ({ item }) => {
   return (
     <div style={{ textAlign: "center", width: 300 }}>
@@ -11,7 +11,27 @@ const MovieCard = ({ item }) => {
         />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
-          <Card.Title>{item.rating} </Card.Title>
+          <Rating
+            initialRating={item.rating}
+            emptySymbol={[
+              "far fa-star fa-2x low",
+              "far fa-star fa-2x low",
+              "far fa-star fa-2x medium",
+              "far fa-star fa-2x medium",
+              "far fa-star fa-2x high",
+              "far fa-star fa-2x high",
+            ]}
+            fullSymbol={[
+              "fa fa-star fa-2x low",
+              "fa fa-star fa-2x low",
+              "fa fa-star fa-2x medium",
+              "fa fa-star fa-2x medium",
+              "fa fa-star fa-2x high",
+              "fa fa-star fa-2x high",
+            ]}
+            stop={6}
+            readonly
+          />
           <Card.Text>{item.description}</Card.Text>
         </Card.Body>
       </Card>

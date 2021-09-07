@@ -1,8 +1,10 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieList from "./components/MovieList";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 import SearchPage from "./components/SearchPage";
+import Addmovie from "./components/add";
 
 function App() {
   const arr = [
@@ -59,8 +61,10 @@ function App() {
       rating: "4.5",
     },
   ];
-  const [Movie, setMovie] = useState(arr);
-
+  const [Movie, setMovie] = useState();
+  useEffect(() => {
+    setMovie(arr);
+  }, []);
   const handelClick = (input) => {
     console.log(input);
     setMovie(Movie.filter((item) => item.title.includes(input)));
@@ -68,12 +72,33 @@ function App() {
       setMovie(arr);
     }
   };
+  const handleAdd = (obj) => {
+    console.log(obj);
+    arr.push(obj);
+    setMovie(arr);
+  };
+  // const AddMovie = () => {
+  //   setMovie(arr.push(name));
+
+  //   // const movi = {
+  //   //   title: "horrible weekend",
+  //   //   description: "this movie was introduced in 2020",
+  //   //   posterURL:
+  //   //     "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg",
+  //   //   rating: "2",
+  //   // };
+  //   // arr.push(movi);
+
+  //   setMovie(arr);
+  //   // console.log(Movie);
+  // };
+
   return (
     <div className="App">
       <SearchPage fnHandelClick={handelClick} />
       <MovieList movies={Movie} />
       {/* <Filter movie={Movie} /> */}
-      <h2>test</h2>
+      <Addmovie fnhandleAddMovie={handleAdd} />
     </div>
   );
 }
