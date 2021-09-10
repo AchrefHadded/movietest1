@@ -12,6 +12,7 @@ function Addmovie(props) {
   const image = useRef();
   const desc = useRef();
   const rate = useRef();
+
   const handelAdd = () => {
     if (
       name.current.value &&
@@ -34,7 +35,11 @@ function Addmovie(props) {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="btn btn-dark"
+        style={{ height: "38px", marginLeft: 10 }}
+        onClick={handleShow}
+      >
         Add Movie
       </Button>
 

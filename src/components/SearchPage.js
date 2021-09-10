@@ -12,7 +12,7 @@ function SearchPage(props) {
         aria-describedby="basic-addon2"
         onChange={() => props.fnHandelClick(input.current.value)}
       />
-      <Button variant="btn btn-dark" id="button-addon2">
+      <Button variant="btn btn-outline-dark" id="button-addon2">
         Search
       </Button>
     </InputGroup>
